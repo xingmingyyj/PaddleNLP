@@ -43,6 +43,51 @@ static void GetRowsCols(const std::vector<int64_t> &shape,
   *p_cols = cols;
 }
 
+/**
+ * Print Input Output (level 0 means least info, level 2 means most info)
+ * **/
+std::string TensorStr(const paddle::Tensor& t) {
+  std::string tensor_name_str = "";
+  if (t.name() == "") {
+    tensor_name_str = "None";
+  } else {
+    tensor_name_str = t.name();
+  }
+  const char* TENSOR_INFO_TEMPLATE =
+      "Type: %s, Dtype: %s, Place: %s, Shape: %s, DistAttr: %s";
+  std::string tensor_info_str = "";
+  if (t.defined()) {
+      if (t.initialized()) {
+        tensor_info_str += paddle::string::Sprintf(TENSOR_INFO_TEMPLATE,
+                                                   t.impl()->type_info().name(),
+                                                   t.dtype(),
+                                                   t.place().DebugString(),
+                                                   t.dims(),
+                                                   "Unknown");
+      } else {
+        tensor_info_str += paddle::string::Sprintf(TENSOR_INFO_TEMPLATE,
+                                                   t.impl()->type_info().name(),
+                                                   "Unknown",
+                                                   "Unknown",
+                                                   "Unknown",
+                                                   "Unknown");
+      }
+  } else {
+    tensor_info_str += "Unknown";
+  }
+    const char* TENSOR_PRINT_TEMPLATE =
+        "{Name: %s, Initialized: %d, Ptr: %d,"
+        "TensorInfo: [ %s ], ADInfo:[ %s ]}";
+      return paddle::string::Sprintf(TENSOR_PRINT_TEMPLATE,
+                                     tensor_name_str,
+                                     t.initialized(),
+                                     t.impl(),
+                                     tensor_info_str,
+                                     "Unknown");
+}
+
+
+
 std::vector<paddle::Tensor> RMSLnFwd(const paddle::Tensor &x,
                                      const paddle::Tensor &scale,
                                      float epsilon) {
@@ -62,8 +107,35 @@ std::vector<paddle::Tensor> RMSLnFwd(const paddle::Tensor &x,
   variance_shape.pop_back();
   auto invvar = paddle::empty(variance_shape, paddle::DataType::FLOAT32, place);
   cuda_rms_norm(x, scale, rows, cols, epsilon, &y, &invvar);
+
+  std::cout << "Finish AD API: " << "external_rms_norm"<<std::endl;
+ // Before log info
+    const char* INPUT_PRINT_TEMPLATE = "{ Input: [%s],  \n Output: [%s] } ";
+    std::string input_str = "";
+    std::string output_str = "";
+    const char* TENSOR_X_TEMPLATE = " \n( x , [%s]), ";
+    std::string input_x_str = paddle::string::Sprintf(
+        TENSOR_X_TEMPLATE, TensorStr(x));
+    input_str += input_x_str;
+    const char* TENSOR_SCALE_TEMPLATE = " \n( scale , [%s]), ";
+    std::string input_scale_str = paddle::string::Sprintf(
+        TENSOR_SCALE_TEMPLATE, TensorStr(scale));
+    input_str += input_scale_str;
+   
+    const char* TENSOR_Y_TEMPLATE = " \n( y , [%s]), ";
+    std::string output_y_str = paddle::string::Sprintf(
+        TENSOR_Y_TEMPLATE, TensorStr(y));
+    output_str += output_y_str;
+    const char* TENSOR_INVVAR_TEMPLATE = " \n( invvar , [%s]), ";
+    std::string output_invvar_str = paddle::string::Sprintf(
+        TENSOR_INVVAR_TEMPLATE, TensorStr(invvar));
+    output_str += output_y_str;
+    std::cout << paddle::string::Sprintf(
+        INPUT_PRINT_TEMPLATE, input_str, output_str);
+  
   return {y, invvar};
 }
+
 
 std::vector<paddle::Tensor> LnFwd(const paddle::Tensor &x,
                                   const paddle::Tensor &scale,
