@@ -1732,20 +1732,13 @@ class Trainer:
 
         random.setstate(checkpoint_rng_state["python"])
         np.random.set_state(checkpoint_rng_state["numpy"])
-
-        if self.args.to_static:
-            core.default_cpu_generator().manual_seed(checkpoint_rng_state["cpu"])
-        else:
-            core.default_cpu_generator().set_state(checkpoint_rng_state["cpu"])
+        core.default_cpu_generator().set_state(checkpoint_rng_state["cpu"])
 
         if core.is_compiled_with_cuda():
             if not len(checkpoint_rng_state["cuda"]) == core.get_cuda_device_count():
                 raise ValueError("Length of gpu state list shoule be equal to the gpu device count")
             for i in range(core.get_cuda_device_count()):
-                if self.args.to_static:
-                    core.default_cuda_generator(i).manual_seed(checkpoint_rng_state["cuda"][i])
-                else:
-                    core.default_cuda_generator(i).set_state(checkpoint_rng_state["cuda"][i])
+                core.default_cuda_generator(i).set_state(checkpoint_rng_state["cuda"][i])
 
         if paddle.device.get_all_custom_device_type() is not None:
             custom_device_type = paddle.device.get_all_custom_device_type()
@@ -1753,12 +1746,7 @@ class Trainer:
                 if not len(checkpoint_rng_state["cuda"]) == core.get_custom_device_count(device):
                     raise ValueError("Length of custom device state list shoule be equal to the custom device count")
                 for i in range(core.get_custom_device_count(device)):
-                    if self.args.to_static:
-                        core.default_custom_device_generator(paddle.CustomPlace(device, i)).manual_seed(
-                            checkpoint_rng_state["cuda"][i]
-                        )
-                    else:
-                        core.default_custom_device_generator(paddle.CustomPlace(device, i)).set_state(
+                    core.default_custom_device_generator(paddle.CustomPlace(device, i)).set_state(
                             checkpoint_rng_state["cuda"][i]
                         )
 

@@ -217,7 +217,6 @@ class AutoTrainer(Trainer):
             epochs_trained = self.state.global_step // num_update_steps_per_epoch
             if not args.ignore_data_skip:
                 steps_trained_in_current_epoch = self.state.global_step % (num_update_steps_per_epoch)
-                steps_trained_in_current_epoch *= args.gradient_accumulation_steps
             else:
                 steps_trained_in_current_epoch = 0
 
@@ -618,8 +617,8 @@ class AutoTrainer(Trainer):
         rng_states = {
             "python": random.getstate(),
             "numpy": np.random.get_state(),
-            "cuda": [k.current_seed() for k in paddle.get_rng_state()],
-            "cpu": paddle.framework.core.default_cpu_generator().get_state().current_seed(),
+            "cuda": [k for k in paddle.get_rng_state()],
+            "cpu": paddle.framework.core.default_cpu_generator().get_state(),
         }
         # if self.args.use_hybrid_parallel:
         #     rng_states[
