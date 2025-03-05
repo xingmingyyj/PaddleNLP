@@ -33,6 +33,7 @@ namespace cub = hipcub;
 #else
 #include <cub/cub.cuh>
 #include <curand_kernel.h>
+#include <cuda_fp8.h>
 #endif
 #include <iostream>
 #include <fstream>
@@ -151,6 +152,13 @@ public:
   typedef __nv_bfloat16 DataType;
 #endif
   typedef paddle::bfloat16 data_t;
+};
+
+template <>
+class PDTraits<paddle::DataType::FLOAT8_E4M3FN> {
+public:
+  typedef __nv_fp8_e4m3 DataType;
+  typedef paddle::float8_e4m3fn data_t;
 };
 
 template <typename T, int Size>
