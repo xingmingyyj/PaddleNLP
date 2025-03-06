@@ -109,13 +109,13 @@
 |           [Qwen1.5](https://github.com/PaddlePaddle/PaddleNLP/tree/develop/llm/config/qwen/)            | Qwen/Qwen1.5-0.5B, Qwen/Qwen1.5-0.5B-Chat, Qwen/Qwen1.5-1.8B, Qwen/Qwen1.5-1.8B-Chat, Qwen/Qwen1.5-4B, Qwen/Qwen1.5-4B-Chat, Qwen/Qwen1.5-7B, Qwen/Qwen1.5-7B-Chat, Qwen/Qwen1.5-14B, Qwen/Qwen1.5-14B-Chat, Qwen/Qwen1.5-32B, Qwen/Qwen1.5-32B-Chat, Qwen/Qwen1.5-72B, Qwen/Qwen1.5-72B-Chat, Qwen/Qwen1.5-110B, Qwen/Qwen1.5-110B-Chat, Qwen/Qwen1.5-MoE-A2.7B, Qwen/Qwen1.5-MoE-A2.7B-Chat |
 |            [Qwen2](https://github.com/PaddlePaddle/PaddleNLP/tree/develop/llm/config/qwen/)             | Qwen/Qwen2-0.5B, Qwen/Qwen2-0.5B-Instruct, Qwen/Qwen2-1.5B, Qwen/Qwen2-1.5B-Instruct, Qwen/Qwen2-7B, Qwen/Qwen2-7B-Instruct, Qwen/Qwen2-72B, Qwen/Qwen2-72B-Instruct, Qwen/Qwen2-57B-A14B, Qwen/Qwen2-57B-A14B-Instruct                                                                                                                                                                       |
 |          [Qwen2-Math](https://github.com/PaddlePaddle/PaddleNLP/tree/develop/llm/config/qwen/)          | Qwen/Qwen2-Math-1.5B, Qwen/Qwen2-Math-1.5B-Instruct, Qwen/Qwen2-Math-7B, Qwen/Qwen2-Math-7B-Instruct, Qwen/Qwen2-Math-72B, Qwen/Qwen2-Math-72B-Instruct, Qwen/Qwen2-Math-RM-72B                                                                                                                                                                                                               |
-|           [Qwen2.5](https://github.com/PaddlePaddle/PaddleNLP/tree/develop/llm/config/qwen/)            | Qwen/Qwen2.5-0.5B, Qwen/Qwen2.5-0.5B-Instruct, Qwen/Qwen2.5-1.5B, Qwen/Qwen2.5-1.5B-Instruct, Qwen/Qwen2.5-3B, Qwen/Qwen2.5-3B-Instruct, Qwen/Qwen2.5-7B, Qwen/Qwen2.5-7B-Instruct, Qwen/Qwen2.5-14B, Qwen/Qwen2.5-14B-Instruct, Qwen/Qwen2.5-32B, Qwen/Qwen2.5-32B-Instruct, Qwen/Qwen2.5-72B, Qwen/Qwen2.5-72B-Instruct                                                                     |
+|           [Qwen2.5](https://github.com/PaddlePaddle/PaddleNLP/tree/develop/llm/config/qwen/)            | Qwen/Qwen2.5-0.5B, Qwen/Qwen2.5-0.5B-Instruct, Qwen/Qwen2.5-1.5B, Qwen/Qwen2.5-1.5B-Instruct, Qwen/Qwen2.5-3B, Qwen/Qwen2.5-3B-Instruct, Qwen/Qwen2.5-7B, Qwen/Qwen2.5-7B-Instruct, Qwen/Qwen2.5-7B-Instruct-1M, Qwen/Qwen2.5-14B, Qwen/Qwen2.5-14B-Instruct, Qwen/Qwen2.5-14B-Instruct-1M, Qwen/Qwen2.5-32B, Qwen/Qwen2.5-32B-Instruct, Qwen/Qwen2.5-72B, Qwen/Qwen2.5-72B-Instruct          |
 |         [Qwen2.5-Math](https://github.com/PaddlePaddle/PaddleNLP/tree/develop/llm/config/qwen/)         | Qwen/Qwen2.5-Math-1.5B, Qwen/Qwen2.5-Math-1.5B-Instruct, Qwen/Qwen2.5-Math-7B, Qwen/Qwen2.5-Math-7B-Instruct, Qwen/Qwen2.5-Math-72B, Qwen/Qwen2.5-Math-72B-Instruct, Qwen/Qwen2.5-Math-RM-72B                                                                                                                                                                                                 |
 |        [Qwen2.5-Coder](https://github.com/PaddlePaddle/PaddleNLP/tree/develop/llm/config/qwen/)         | Qwen/Qwen2.5-Coder-1.5B, Qwen/Qwen2.5-Coder-1.5B-Instruct, Qwen/Qwen2.5-Coder-7B, Qwen/Qwen2.5-Coder-7B-Instruct                                                                                                                                                                                                                                                                              |
+|             [QwQ](https://github.com/PaddlePaddle/PaddleNLP/tree/develop/llm/config/qwen/)              | Qwen/QwQ-32B, Qwen/QwQ-32B-Preview                                                                                                                                                                                                                                                                                                                                                            |
 |            [Yuan2](https://github.com/PaddlePaddle/PaddleNLP/tree/develop/llm/config/yuan/)             | IEITYuan/Yuan2-2B, IEITYuan/Yuan2-51B, IEITYuan/Yuan2-102B                                                                                                                                                                                                                                                                                                                                    |
 
 * 4D 并行和算子优化已支持 LLaMA 系列、Baichuan 系列、Bloom 系列、ChatGLM 系列、Gemma 系列、Mistral 系列、OPT 系列和 Qwen 系列，【LLM】模型4D 并行和算子支持列表如下：
-
 
 | 模型名称/并行能力支持 | 数据并行 | 张量模型并行 |          | 参数分片并行 |        |        | 流水线并行 |
 |:---------------------:|:--------:|:------------:|:--------:|:------------:|:------:|:------:|:----------:|
@@ -156,16 +156,16 @@
 | [Yuan](./llm/config/yuan)                  |    ✅     |  ✅  |  ✅   |    🚧     |      🚧       |         ✅          |  🚧  |    ✅     |      🚧      |
 * [大模型推理](./llm/docs/predict/inference.md)已支持 LLaMA 系列、Qwen 系列、DeepSeek 系列、Mistral 系列、ChatGLM 系列、Bloom 系列和 Baichuan 系列，支持 Weight Only INT8及 INT4推理，支持 WAC（权重、激活、Cache KV）进行 INT8、FP8量化的推理，【LLM】模型推理支持列表如下：
 
-|          模型名称/量化类型支持              | FP16/BF16 | WINT8 | WINT4 | INT8-A8W8 | FP8-A8W8 | INT8-A8W8C8 |
-|:----------------------------------------:|:---------:|:-----:|:-----:|:---------:|:--------:|:-----------:|
-|   [LLaMA](./llm/docs/predict/llama.md)   |     ✅     |   ✅   |   ✅   |     ✅     |    ✅     |      ✅      |
-|    [Qwen](./llm/docs/predict/qwen.md)    |     ✅     |   ✅   |   ✅   |     ✅     |    ✅     |      ✅      |
-|[DeepSeek](./llm/docs/predict/deepseek.md)|     ✅     |   ✅   |   ✅   |     🚧     |    ✅     |      🚧      |
-|  [Qwen-Moe](./llm/docs/predict/qwen.md)  |     ✅     |   ✅   |   ✅   |     🚧     |    🚧     |      🚧      |
-| [Mixtral](./llm/docs/predict/mixtral.md) |     ✅     |   ✅   |   ✅   |     🚧     |    🚧     |      🚧      |
-|                 ChatGLM                  |     ✅     |   ✅   |   ✅   |     🚧     |    🚧     |      🚧      |
-|                  Bloom                   |     ✅     |   ✅   |   ✅   |     🚧     |    🚧     |      🚧      |
-|                 BaiChuan                 |     ✅     |   ✅   |   ✅   |     ✅     |    ✅     |      🚧      |
+|           模型名称/量化类型支持            | FP16/BF16 | WINT8 | WINT4 | INT8-A8W8 | FP8-A8W8 | INT8-A8W8C8 |
+|:------------------------------------------:|:---------:|:-----:|:-----:|:---------:|:--------:|:-----------:|
+|    [LLaMA](./llm/docs/predict/llama.md)    |     ✅     |   ✅   |   ✅   |     ✅     |    ✅     |      ✅      |
+|     [Qwen](./llm/docs/predict/qwen.md)     |     ✅     |   ✅   |   ✅   |     ✅     |    ✅     |      ✅      |
+| [DeepSeek](./llm/docs/predict/deepseek.md) |     ✅     |   ✅   |   ✅   |    🚧     |    ✅     |     🚧      |
+|   [Qwen-Moe](./llm/docs/predict/qwen.md)   |     ✅     |   ✅   |   ✅   |    🚧     |    🚧    |     🚧      |
+|  [Mixtral](./llm/docs/predict/mixtral.md)  |     ✅     |   ✅   |   ✅   |    🚧     |    🚧    |     🚧      |
+|                  ChatGLM                   |     ✅     |   ✅   |   ✅   |    🚧     |    🚧    |     🚧      |
+|                   Bloom                    |     ✅     |   ✅   |   ✅   |    🚧     |    🚧    |     🚧      |
+|                  BaiChuan                  |     ✅     |   ✅   |   ✅   |     ✅     |    ✅     |     🚧      |
 
 ## 安装
 
